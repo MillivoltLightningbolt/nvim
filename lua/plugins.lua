@@ -20,5 +20,7 @@ end
 
 return require('packer').startup(function()
   -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+  use 'wbthomason/packer.nvim'	-- plugin manager
+  use 'neovim/nvim-lspconfig'	-- configuration for language server
+  use 'hrsh7th/nvim-compe'	-- autocomplete
 end)
