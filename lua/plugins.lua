@@ -13,12 +13,7 @@ end
 
 
 
-
-
-
--- QUICKSTART
-
-
+-- SETUP
 return require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'	-- plugin manager
