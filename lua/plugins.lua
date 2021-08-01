@@ -1,3 +1,5 @@
+-- This file can be loaded by calling `lua require('plugins')` from your init.vim
+
 -- BOOTSTRAPPING (automatically install packer to any machine this config is cloned to)
 local execute = vim.api.nvim_command
 local fn = vim.fn
@@ -16,7 +18,6 @@ end
 
 -- QUICKSTART
 
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
 return require('packer').startup(function()
   -- Packer can manage itself
