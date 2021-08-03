@@ -16,9 +16,10 @@ end
 -- SETUP
 return require('packer').startup(function()
   -- Packer can manage itself
-  use 'wbthomason/packer.nvim'	-- plugin manager
-  use 'neovim/nvim-lspconfig'	-- configuration for language server
-  use 'hrsh7th/nvim-compe'	-- autocomplete
+  use 'wbthomason/packer.nvim'		-- plugin manager
+  use 'neovim/nvim-lspconfig'		-- configuration for language server
+  use 'kabouzeid/nvim-lspinstall'	-- easy language installation
+  use 'hrsh7th/nvim-compe'		-- autocomplete
   use 'kyazdani42/nvim-web-devicons'	-- file icons in file explorer
   use 'kyazdani42/nvim-tree.lua'	-- file explorer
 end)
