@@ -31,3 +31,8 @@ vim.api.nvim_set_keymap('n', '<M-j>', '<C-w>j', { noremap = true, silent = true}
 vim.api.nvim_set_keymap('n', '<M-k>', '<C-w>k', { noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<M-l>', '<C-w>l', { noremap = true, silent = true})
 
+-- Move current line 1 down in normal mode
+vim.api.nvim_set_keymap('n', '<C-j>', 'ddp', { noremap = true, silent = true})
+-- Move current line 1 up in normal mode
+vim.api.nvim_set_keymap('n', '<C-k>', 'ddkP', { noremap = true, silent = true})
+
