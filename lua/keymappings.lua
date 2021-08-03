@@ -18,6 +18,9 @@ vim.api.nvim_set_keymap('n', '<F12>', ':e $MYVIMRC<ENTER>', { noremap = true, si
 -- press F11 to enter neovims vimrc file
 vim.api.nvim_set_keymap('n', '<F11>', ':e ~/.config/nvim/lua/keymappings.lua<ENTER>', { noremap = true, silent = true})
 
+-- press Shift-F11 to enter plugins file
+vim.api.nvim_set_keymap('n', '<F23>', ':e ~/.config/nvim/lua/plugins.lua<ENTER>', { noremap = true, silent = true})
+
 -- source: https://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work
 -- press F9 to source vimrc file after modifying it
 vim.api.nvim_set_keymap('n', '<F9>', ':source $MYVIMRC<Enter>', { noremap = true, silent = true})
