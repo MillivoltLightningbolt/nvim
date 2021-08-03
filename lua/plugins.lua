@@ -19,4 +19,6 @@ return require('packer').startup(function()
   use 'wbthomason/packer.nvim'	-- plugin manager
   use 'neovim/nvim-lspconfig'	-- configuration for language server
   use 'hrsh7th/nvim-compe'	-- autocomplete
+  use 'kyazdani42/nvim-web-devicons'	-- file icons in file explorer
+  use 'kyazdani42/nvim-tree.lua'	-- file explorer
 end)
