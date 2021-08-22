@@ -11,10 +11,10 @@
 local keymap = vim.api.nvim_set_keymap          -- shortcut
 local opts = { noremap = true, silent = true }  -- commonly used options
 
-local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
-local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
-local g = vim.g      -- a table to access global variables
-local opt = vim.opt  -- to set options
+-- local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
+-- local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
+-- local g = vim.g      -- a table to access global variables
+-- local opt = vim.opt  -- to set options
 
 
 
@@ -26,8 +26,15 @@ vim.g.mapleader = ' '
 keymap('n', '<C-l>', ':nohlsearch<Enter><C-l>', opts)
 
 -- add new line below/above cursor in normal mode with Enter/Shift-Enter
-keymap('n', '<ENTER>', 'o<ESC>', opts)	  -- below
+keymap('n', '<ENTER>',   'o<ESC>', opts)	-- below
 keymap('n', '<S-ENTER>', 'O<ESC>', opts)	-- above
+
+-- add new line below cursor in insert mode with Ctrl+Enter
+keymap('i', '<C-ENTER>', '<ESC>o', opts)	-- below
+keymap('i', '<S-ENTER>', '<ESC>O', opts)	-- above
+
+-- jump to end of line in insert mode (useful to skip autocompleted pairs {[("'``'")]})
+keymap('i', '<C-l>', '<ESC>A', opts)
 
 -- toggle file explorer
 keymap('n', '<Leader>e', ':NvimTreeToggle<Enter>', opts)
@@ -53,8 +60,8 @@ keymap('n', '<M-h>', '<C-w>h', opts)
 keymap('n', '<M-j>', '<C-w>j', opts)
 keymap('n', '<M-k>', '<C-w>k', opts)
 keymap('n', '<M-l>', '<C-w>l', opts)
-
 -- Move current line up/down 1 in normal mode
+
 keymap('n', '<C-j>', 'ddp', opts)   -- down
 keymap('n', '<C-k>', 'ddkP', opts)  -- up
 
@@ -63,34 +70,34 @@ keymap('i', '<C-Space>', 'compe#complete()', { expr = true, noremap = true, sile
 keymap('i', '<ENTER>', 'compe#confirm(\'<Enter>\')', { expr = true, noremap = true, silent = true})
 keymap('i', '<C-e>', 'compe#close(\'<C-e>\')', { expr = true, noremap = true, silent = true})
 keymap('i', '<C-f>', 'compe#scroll({ \'delta\': +4 })', { expr = true, noremap = true, silent = true})
-keymap('i', '<C-d>', 'compe#scroll({ \'delta\': -4 })', { expr = true, noremap = true, silent = true})
+keymap('i', '<C-b>', 'compe#scroll({ \'delta\': -4 })', { expr = true, noremap = true, silent = true}) -- NOTE <C-d> is already used for indenting in insert mode (<C-d> and <C-t>)
 
 
 
-local function map(mode, lhs, rhs, opts)
+local function map(mode, lhs, rhs, overide_options)
   local options = {noremap = true}
-  if opts then options = vim.tbl_extend('force', options, opts) end
+  if overide_options then options = vim.tbl_extend('force', options, overide_options) end
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-map('n', '<space>,', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
-map('n', '<space>;', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
-map('n', '<space>a', '<cmd>lua vim.lsp.buf.code_action()<CR>')
-map('n', '<space>d', '<cmd>lua vim.lsp.buf.definition()<CR>')
-map('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+map('n', '<leader>,', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
+map('n', '<leader>;', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
+map('n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>')
+map('n', '<leader>d', '<cmd>lua vim.lsp.buf.definition()<CR>')
+map('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>')
 map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
---map('n', '<space>h', '<cmd>lua vim.lsp.buf.hover()<CR>')
-map('n', '<space>m', '<cmd>lua vim.lsp.buf.rename()<CR>')
-map('n', '<space>r', '<cmd>lua vim.lsp.buf.references()<CR>')
-map('n', '<space>s', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
+--map('n', '<leader>h', '<cmd>lua vim.lsp.buf.hover()<CR>')
+map('n', '<leader>m', '<cmd>lua vim.lsp.buf.rename()<CR>')
+map('n', '<leader>r', '<cmd>lua vim.lsp.buf.references()<CR>')
+map('n', '<leader>s', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
+
+-- telescope navigation
+-- map('n', '<leader>ff', '<cmd>lua require(\'telescope.builtin\').find_files()<cr>')
+-- map('n', '<leader>fg', '<cmd>lua require(\'telescope.builtin\').live_grep()<cr>')
+-- map('n', '<leader>fb', '<cmd>lua require(\'telescope.builtin\').buffers()<cr>')
+-- map('n', '<leader>fh', '<cmd>lua require(\'telescope.builtin\').help_tags()<cr>')
 
 -- cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'  -- highlight yanked text (disabled in visual mode
-
-
-
-
-
-
 
 -- local wk = require("which-key")
 
@@ -104,3 +111,4 @@ map('n', '<space>s', '<cmd>lua vim.lsp.buf.document_symbol()<CR>')
 --     b = { function() print("bar") end, "Foobar" } -- you can also pass functions!
 --   },
 -- }, { prefix = "<leader>" })
+
