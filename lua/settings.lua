@@ -5,7 +5,7 @@ NOTE: there are 3 types of configuration options:
 3. local to buffer (vim.bo)
 --]]
 
-local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
+local cmd = vim.cmd  -- to execute Vim commands ':'
 local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
 local g = vim.g      -- a table to access global variables
 local opt = vim.opt  -- to set options
@@ -31,11 +31,12 @@ opt.termguicolors = true            -- True color support
 opt.wildmode = {'list', 'longest'}  -- Command-line completion mode
 opt.wrap = false                    -- Disable line wrap
 opt.clipboard = 'unnamedplus'       -- copy/paste to system clipboard
-opt.termguicolors = true          -- enable 24-bit RGB colors
 
 -- NOTE: colorschemes *might* have to be instantiated before any require lspconfig.<server>.setup{}
 -- COLORSCHEME:
 --cmd[[colorscheme melange]]
 cmd[[colorscheme neon]]
+opt.termguicolors = true            -- enable 24-bit RGB colors
+opt.timeoutlen = 500                -- time in milliseconds to wait for a mapped sequence to complete (sets which-key timing)
 
 cmd 'au TextYankPost * lua vim.highlight.on_yank {on_visual = false}'  -- highlight yanked text (disabled in visual mode
