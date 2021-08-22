@@ -1,5 +1,6 @@
 -- Treesitter
 local ts = require 'nvim-treesitter.configs'
+
 ts.setup {
   ensure_installed = { "python", "bash", "lua", "yaml", "dockerfile", "java" }, --'maintained',    -- use all maintained languages
   highlight = {

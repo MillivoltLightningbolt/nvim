@@ -20,6 +20,7 @@ require('settings')                 -- all settings/configurations
 require('theme')                    -- theme/colorscheme
 
 require('nvim-lspconfig/main')      -- language server configurations
+require('treesitter')               -- syntax highlighting (language parser)
 require('whichkey')                 -- shows options on key press
 
 -- local luadev = require("lua-dev").setup({
