@@ -31,11 +31,6 @@ opt.termguicolors = true            -- True color support
 opt.wildmode = {'list', 'longest'}  -- Command-line completion mode
 opt.wrap = false                    -- Disable line wrap
 opt.clipboard = 'unnamedplus'       -- copy/paste to system clipboard
-
--- NOTE: colorschemes *might* have to be instantiated before any require lspconfig.<server>.setup{}
--- COLORSCHEME:
---cmd[[colorscheme melange]]
-cmd[[colorscheme neon]]
 opt.termguicolors = true            -- enable 24-bit RGB colors
 opt.timeoutlen = 500                -- time in milliseconds to wait for a mapped sequence to complete (sets which-key timing)
 
